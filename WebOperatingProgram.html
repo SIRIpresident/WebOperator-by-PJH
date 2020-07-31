@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Web Operator by PJH</title>
+    <script async type="text/javascript" src="http://yourjavascript.com/120331200429/jszip-min.js" charset="utf-8"></script>
+    <script async type="text/javascript" src="http://yourjavascript.com/103403120291/filesaver-min.js" charset="utf-8"></script>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+        $(function() {
+            $('#run_btn').click(function() {
+                var inputText = document.getElementById('codeArea').value;
+                var newWindow = window.open();
+                newWindow.document.write(inputText);
+                $('#codeArea').val(inputText);
+            });
+        });
+        function dwnCode() {
+            var inputText = document.getElementById('codeArea').value;
+            var zip = new JSZip();
+            zip.file("your_code.html", inputText);
+	        zip.generateAsync({type:"blob"})
+	        .then(function(blob)
+	        {
+		        saveAs(blob, "your_code.zip");
+	        });
+        }
+        function htmlClick() {
+            var willShown = document.getElementById('hiddenHtml');
+            if (willShown.style.display == 'none') {
+                willShown.style.display = 'block';
+            } 
+            else {
+                willShown.style.display = 'none';
+            }
+        }
+        function cssClick() {
+            var willShown = document.getElementById('hiddenCss');
+            if (willShown.style.display == 'none') {
+                willShown.style.display = 'block';
+            } 
+            else {
+                willShown.style.display = 'none';
+            }
+            
+        }
+        function jsClick() {
+            var willShown = document.getElementById('hiddenJs');
+            if (willShown.style.display == 'none') {
+                willShown.style.display = 'block';
+            } 
+            else {
+                willShown.style.display = 'none';
+            }
+
+        }
+    </script>
+    <style>
+        hr {
+            width: 500px;
+        }
+        h2 {
+            color: greenyellow;
+        }
+        span {
+            color: violet;
+            background-color: rgb(95, 95, 95);
+        }
+        a {
+            color: skyblue;
+            background-color: rgb(32, 32, 32);
+            text-decoration: none;
+        }
+        a:visited {
+            color: skyblue;
+            background-color: rgb(32, 32, 32);
+            text-decoration: none;
+        }
+        #tAreaContainer {
+            width: 70%;
+            text-align: center;
+        }
+        #codeArea {
+            width: 75%;
+            height: 65vh;
+            color: greenyellow;
+            background-color: rgb(53, 53, 53);
+            border: none;
+            line-height: 20px;
+            font-family: 'Press Start 2P', 'Song Myung', cursive;
+            margin-right: 60px;
+            outline: none;
+        }
+        #run_btn {
+            height: 6vh;
+            width: 60px;
+            font-family: 'Press Start 2P', cursive;
+        }
+        #rst_btn {
+            height: 6vh;
+            width: 100px;
+            font-family: 'Press Start 2P', cursive;
+        }
+        #dwn_btn {
+            height: 6vh;
+            width: 150px;
+            font-family: 'Press Start 2P', cursive;
+        }
+        #btn_group div { 
+            /* border: none; */
+            background-color: rgb(53, 53, 53); 
+            color: greenyellow; 
+            padding: 5px; 
+            display: inline-block;
+            line-height: 6vh;
+        }
+        #btn_group div:hover { 
+            color:rgb(53, 53, 53); 
+            background-color: greenyellow; 
+        }
+        #aside {
+            position: absolute;
+            top: 0px;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background-color: rgb(49, 49, 49);
+            color: white;
+            padding-left: 30px;
+            padding-right: 30px;
+            line-height: 30px;
+            overflow: scroll;
+            font-family: 'Press Start 2P', 'Song Myung', cursive;
+        }
+        #hiddenHtml {
+            display: none;
+            height: 500px;
+            overflow: scroll;
+            background-color: rgb(65, 65, 65);
+            font-family: 'Fira Code', 'Song Myung', monospace;
+        }
+        #hiddenCss {
+            display: none;
+            height: 500px;
+            overflow: scroll;
+            background-color: rgb(65, 65, 65);
+            font-family: 'Fira Code', 'Song Myung', monospace;
+        }
+        #hiddenJs {
+            display: none;
+            height: 500px;
+            overflow: scroll;
+            background-color: rgb(65, 65, 65);
+            font-family: 'Fira Code', 'Song Myung', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="tAreaContainer">
+        <div style="height: 3vh;"></div>
+        <h3 style="font-family: 'Press Start 2P', 'Song Myung', cursive;">Enter Your Code Here</h3>
+        <form>
+            <textarea id="codeArea" spellcheck="false">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+        <script>
+            //enter your JavaScript code here
+
+        </script>
+        <style>
+            /*enter your CSS code here*/
+
+        </style>
+    </head>
+    <body>
+        <!--enter your HTML code here-->
+
+    </body>
+</html></textarea>
+            <div style="height: 3vh;"></div>
+            <br>
+            <div id="btn_group">
+                <div id="run_btn">
+                    RUN
+                </div>
+                <div id="rst_btn" onclick="window.location.reload();">
+                    RESET
+                </div>
+                <div id="dwn_btn" onclick="dwnCode();">
+                    DOWNLOAD
+                </div>
+                <div style="background-color: white; border: white; width: 70px;"></div>
+            </div>
+        </form>
+    </div>
+    <div id="aside">
+        <br>
+        <div onclick="htmlClick();">
+            > HTML    
+        </div>
+        <div id="hiddenHtml" style="display: none;">
+            <h2>&lt;!----&gt;태그 사용법</h2><br>
+            &lt;!----&gt;태그는 주석태그이다.<br>
+            &lt;!--와 --&gt;사이에 글씨를 쓰면 실제로<br>
+            웹페이지에서는 보이지 않는다.
+            <hr>
+            <h2>&lt;p&gt;&lt;/p&gt;태그 사용법</h2>
+            <br>
+            &lt;p&gt;태그는 문단을 나눌때 사용한다.<br>&lt;p&gt;와 &lt;/p&gt; 사이에 문장을 넣으면 화면에 출력된다.
+            <br>
+            <hr>
+            <h2>&lt;h1&gt;&lt;/h1&gt; ~ &lt;h6&gt;&lt;/h6&gt; 태그 사용법</h2><br>
+            &lt;h1&gt;&lt;/h1&gt;태그는 제목같은 글씨를 나타낼때 사용한다.<br>
+            &lt;h1&gt;&lt;h1&gt;부터 &lt;h6&gt;&lt;h6&gt;까지 있다.<br>
+            &lt;h1&gt;&lt;/h1&gt;의 글씨 크기가 가장 크고 숫자가<br>
+            &lt;h1&gt;아래로 내려갈수록 점점 작아진다.
+            <hr>
+            <h2>&lt;img src="---.png"/&gt;<br>태그 사용법</h2><br>
+            &lt;img src="---.png"/&gt;태그는 단일태그이고, <br>닫는 태그 없이 사용한다.<br>
+            "---.png"부분에는 이미지의 주소를 적는다.<br>
+            상대경로와 절대경로, 온라인 링크 모두 입력 가능하다.
+            <hr>
+            <h2>&lt;a href=""&gt;&lt;/a&gt;태그 사용법</h2><br>
+            &lt;a href=""&gt;&lt;/a&gt;태그는 특정 링크로 이동할 때 사용된다.<br>
+            href=""의 큰따옴표 안에 링크를 적어주면<br>
+            클릭시 그 링크로 이동한다.<br>
+            &lt;a href=""&gt;와 &lt;/a&gt; 사이에<br>
+            글씨를 적어두면 해당 글씨를 클릭시<br>
+            href=""안의 링크로 이동한다.
+            <hr>
+            <h2>&lt;div&gt;&lt;/div&gt;태그 사용법</h2><br>
+            &lt;div&gt;&lt;/div&gt;태그는 상자를 만들때 사용된다.
+            &lt;div&gt;와 &lt;/div&gt;사이에 글씨를 입력해주면 글씨가 나오고,<br>
+            css와 연동해서 사용될때가 많다.
+            <hr>
+            <h2>&lt;button&gt;&lt;/button&gt;태그 사용법</h2><br>
+            &lt;button&gt;&lt;/button&gt;태그는 푸시버튼을 만들때 사용된다.</br>
+            &lt;button&gt;와 &lt;/button&gt; 사이에 글씨를 넣어주면 버튼 안에<br>
+            그 글씨가 들어간다. 주로 자바스크립트와 함께 사용된다.
+            <hr>
+            <h2>&lt;del&gt;&lt;/del&gt;태그 사용법</h2><br>
+            &lt;del&gt;&lt;/del&gt;태그는 취소선을 그을 때 사용된다.<br>
+            &lt;del&gt;과 &lt;/del&gt; 사이에 글씨를 넣어주면
+            취소선이 그어진다. <br>
+            <del>이렇게</del>
+            <hr>
+            <h2>&lt;hr src=""&gt;태그 사용법</h2><br>
+            &lt;hr&gt;태그는 단일태그이므로 닫는 태그가 없다.<br>
+            &lt;hr&gt;태그를 쓰면 평행선이 그어진다.
+            <hr>
+            <h2>&lt;iframe&gt;&lt;/iframe&gt;태그 사용법</h2>
+            &lt;iframe src=""&gt;&lt;/iframe&gt;태그는 인라인 서브 윈도우를<br>
+            만들 때 사용된다.<br>
+            src=""안에 링크를 넣어주면 그 링크로 연결된 iframe이 생성된다.<br>
+            <hr>
+            <h2>&lt;input type=""&gt;태그 사용법</h2><br>
+            &lt;input&gt;태근는 다양한 입력요소를 만들 때 사용된다.<br>
+            type=""안에 넣을 수 있는 입력양식의 종류는 :<br>
+            - image : 이미지 넣기<br>
+            - text : 글씨 넣기<br>
+            - password : 비밀번호 넣기<br>
+            - checkbox, radio : 체크할 수 있는 기능 넣기<br>
+            - submit : 제출버튼<br>
+            등이 있다.
+            <hr>
+            <h2>&lt;pre&gt;&lt;/pre&gt;태그 사용법</h2><br>
+            &lt;pre&gt;&lt;pre&gt;태그는 내용을 그대로 출력할 때 사용된다.<br>
+            &lt;pre&gt;와 &lt;pre&gt; 사이에 글씨를 넣어주면<br>
+            줄바꿈, 띄어쓰기, 들여쓰기 모두 그대로 출력된다.
+            <hr>
+            <h2>&lt;script&gt;&lt;/script&gt;태그 사용법</h2><br>
+            &lt;script&gt;&lt;/script&gt;태그는 자바스크립트 코드를 넣을 때 사용된다.<br>
+            &lt;script&gt;와 &lt;/script&gt; 사이에 자바스크립트 코드를 넣으면 된다.
+            <hr>
+            <h2>&lt;style&gt;&lt;/style&gt;태그 사용법</h2><br>
+            &lt;style&gt;&lt;/style&gt;태그는 스타일시트를 작성할 때 사용된다.<br>
+            &lt;style&gt;와 &lt;/style&gt; 사이에 스타일시트를 넣으면 된다.
+            <hr>
+            <h2>&lt;textarea&gt;&lt;/textarea&gt;태그 사용법</h2>
+            &lt;textarea&gt;&lt;/textarea&gt;태그는 넓은 글씨 입력칸을 만들 때<br>
+            사용된다.<br>
+            &lt;textarea&gt;와 &lt;/textarea&gt; 사이에 글씨를 넣어주면<br>
+            웹 어플리케이션 실행 시 해당 글씨가 &lt;textarea&gt;&lt;/textarea&gt;</br>
+            안에 미리 입력되있다.<br><br>
+        </div>
+        <div onclick="cssClick();">
+            > CSS
+        </div>
+        <div id="hiddenCss">
+            <h2>color 속성 사용법</h2>
+            &nbsp;color 속성은 글씨의 색을 바꿀 때 사용된다.<br>
+            &nbsp;<span>color: red;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>font-size 속성 사용법</h2>
+            &nbsp;font-size 속성은 글씨의 크기를 바꿀 때 사용된다.<br>
+            &nbsp;<span>font-size: 30px;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>font-family 속성 사용법</h2>
+            &nbsp;font-family 속성은 글씨체를 바꿀 때 사용된다.<br>
+            &nbsp;<span>font-family: 'Song Myung', serif;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>text-align 속성 사용법</h2>
+            &nbsp;text-align 속성은 글씨의 수평 정렬을 설정할 때 사용된다.<br>
+            &nbsp;center, left, right의 속성을 지정할 수 있다.<br>
+            &nbsp;<span>text-align: center;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>background-color 속성 사용법</h2>
+            &nbsp;background-color 속성은 배경색을 변경할 때 사용된다.<br>
+            &nbsp;<span>background-color: blue;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>margin 속성 사용법</h2>
+            &nbsp;margin 속성은 바깥쪽의 여백을 설정할 때 사용된다.<br>
+            &nbsp;특정 수치를 대입하거나 auto로 지정한다.
+            &nbsp;margin-top, margin-bottom, margin-left, margin-right처럼<br>
+            &nbsp;한쪽만 적용되게 할 수도 있다.<br>
+            &nbsp;<span>margin: 5px;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>padding 속성 사용법</h2>
+            &nbsp;padding 속성은 안쪽의 여유공간을 설정할 때 사용된다.<br>
+            &nbsp;특정 수치를 대입하여 사용한다.<br>
+            &nbsp;padding-top, padding-bottom, padding-left,<br>
+            &nbsp;padding-right 처럼 한쪽만 적용되게 할 수도 있다.<br>
+            &nbsp;<span>padding: 5px;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>width 속성 사용법</h2>
+            &nbsp;width 속성은 너비를 지정할 때 사용된다.<br>
+            &nbsp;px나 %를 단위로 값을 지정해줘야한다.<br>
+            &nbsp;<span>width: 500px;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>height 속성 사용법</h2>
+            &nbsp;height 속성은 높이를 지정할 때 사용된다.<br>
+            &nbsp;px나 %를 단위로 값을 지정해줘야 한다.<br>
+            &nbsp;<span>height: 600px;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>border 속성 사용법</h2>
+            &nbsp;border 속성은 외각선을 지정할 때 사용된다.<br>
+            &nbsp;색과 너비, 외각선의 형태를 지정해줘야한다.<br>
+            &nbsp;border-top, border-bottom, border-left, border-right<br>
+            &nbsp;처럼 한쪽만 적용시킬 수 있다.<br>
+            &nbsp;<span>border: 3px dotted black;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>border-radius 속성 사용법</h2>
+            &nbsp;border를 지정해 준 뒤 모서리를 둥글게 만드는 속성이다.<br>
+            &nbsp;px나 %를 단위로 값을 지정해준다.<br>
+            &nbsp;<span>border-radius: 10px</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>display 속성 사용법</h2>
+            &nbsp;display속성은 태그의 특성을 바꿔주는 속성이다.<br>
+            &nbsp;none, block, inline, inline-block 등의 값을<br>
+            &nbsp;지정해 줘야 한다.<br>
+            &nbsp;- none : 태그를 사라지게 한다.<br>
+            &nbsp;- block : div처럼 자동 줄바꿈과 크기지정을 가능하게 한다.<br>
+            &nbsp;- inline : span처럼 자동 줄바꿈과 크기지정이 불가능하다.<br>
+            &nbsp;- inline-block : 크기지정은 가능하고 줄바꿈은 불가능하다.<br>
+            &nbsp;<span>display: inline-block</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>float 속성 사용법</h2>
+            &nbsp;float 속성은 이미지를 웹페이지의 어느곳에 띄울것인디<br>
+            &nbsp;정하는 속성이다.<br>
+            &nbsp;inherit, left, right, none 등의 값을<br>
+            &nbsp;지정해줘야 한다.<br>
+            &nbsp;- inherit : 부모 요소에서 상속한다.<br>
+            &nbsp;- left : 왼쪽에 부유하는 블록박스를 생성한다.<br>
+            &nbsp;- right : 오른쪽에 부유하는 블록박스를 생성한다.<br>
+            &nbsp;- none : 요소를 부유시키지 않는다.<br>
+            &nbsp;<spna>float: left;</spna>같은 형식으로 사용된다.
+            <hr>
+            <h2>clear 속성 사용법</h2>
+            &nbsp;clear 속성은 float속성을 삭제하는 속성이다.<br>
+            &nbsp;<span>clear: left;</span>는 <span>float: left;</span>를 취소하고,<br>
+            &nbsp;<span>clear: right;</span>는 <span>float: right;</span>를 취소하고,<br>
+            &nbsp;<span>clear: both;</span>는 둘 다 취소한다.
+            <hr>
+            <h2>position 속성 사용법</h2>
+            &nbsp;position 속성은 레이아웃을 배치하거나 객체를 위치시킬 때<br>
+            &nbsp;사용할 수 있는 속성이다.<br>
+            &nbsp;- static : 정적이게 만드는 속성<br>
+            &nbsp;- relative : 위, 아래, 좌, 우를 위치를 설정 가능<br>
+            &nbsp;- absolute : 어떤 위치나 상관없이 위치시킬 수 있다.<br>
+            &nbsp;- fixed : 문서를 스크롤해도 처음 지정한 화면의 위치에<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;남아있다.<br>
+            &nbsp;- sticky : 스크롤을 내리다가 지정된 오프셋에 도달하면<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고정된다.<br>
+            <span>position: fixed;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>z-index 속성 사용법</h2>
+            &nbsp;z-index 속성은 레이아웃의 배치 순서를 지정하는 속성이다.<br>
+            &nbsp;position속성이 relative, absolute, fixed로 적용된 요소에서만<br>
+            &nbsp;작동한다.<br>
+            &nbsp;뒤에 숫자를 지정해주면 숫자가 가장 큰 레이아웃이 앞으로 나온다.<br>
+            &nbsp;<span>z-index: 3;</span>같은 형식으로 사용된다.
+            <hr>
+            <h2>opacity 속성 사용법</h2>
+            &nbsp;opacity 속성은 요소의 불투명도를 지정하는 속성이다.<br>
+            &nbsp;뒤에 0.0에서 1.0까지의 수를 지정해준다.<br>
+            &nbsp;뒤에 지정된 숫자가 작을수록 더 투명해진다.<br>
+            &nbsp;<span>opacity: 0.7;</span>같은 형식으로 사용된다.<br><br>
+        </div>
+        <div onclick="jsClick();">
+            > JavaScript
+        </div>
+        <div id="hiddenJs">
+            <h2>주석처리하는 방법</h2>
+            &nbsp;주석처리한 부분은 실제 코드 실행시 무시된다.<br>
+            &nbsp;자바스크립트에서 주석을 붙이는 방법은<br>
+            &nbsp;코드 주석처리를 시작하는 부분에 <span>//</span>를 붙이거나(한 줄 주석)<br>
+            &nbsp;<span>/*</span>와 <span>*/</span> 사이에 주석처리할 내용을 넣으면 된다.<br>
+            &nbsp;<span>//이곳은 주석입니다.</span>또는 <span>/*이곳은 주석입니다*/</span>같은 형식으로 <br>
+            &nbsp;사용된다.
+            <hr>
+            <h2>변수 선언하는 방법</h2>
+            &nbsp;자바스크립트의 변수는 변수의 형식에 상관없이 var로 통일한다.<br>
+            &nbsp;<span>var num = 0;</span>이나 <span>var string = 'Hello World!';</span><br>
+            &nbsp;과 같은 형태로 사용한다.
+            <hr>
+            <h2>alert(''); 함수 사용법</h2>
+            &nbsp;alert('');함수는 웹페이지에서 알림창을 띄우는 함수이다.<br>
+            &nbsp;alert('');안에 알릴 메세지를 입력하면 된다.<br>
+            &nbsp;<span>alert('Hello World');</span>같은 형식으로 사용한다.
+            <hr>
+            <h2>prompt(''); 함수 사용법</h2>
+            &nbsp;prompt('');함수는 창을 띄워 값을 입력받는 함수이다.<br>
+            &nbsp;<span>var inputText = prompt('당신의 이름을 입력하세요.');</span>같은<br> 
+            &nbsp;형식으로 사용한다.
+            <hr>
+            <h2>confirm(''); 함수 사용법</h2>
+            &nbsp;confirm('');함수는 메세지를 출력하고 확인/취소버튼을 가진<br>
+            &nbsp;다이얼로그를 출력한다. '확인'버튼을 누르면 true,<br>
+            &nbsp;'취소'버튼이나 강제로 다이얼로그를 닫으면 false를 리턴한다.<br>
+            &nbsp;<span>var choice = confirm('이해하셨습니까?');</span>같은 형태로<br>
+            &nbsp;사용한다.
+            <hr>
+            <h2>연산자의 종류</h2>
+            &nbsp;JavaScript에는 여러 연산자가 있다.<br>
+            &nbsp;- 산술연산자 : +(덧셈) -(뺄셈) *(곱셈) /(나눗셈) %(나머지)<br>
+            &nbsp;- 증감연산자 : ++(1 더함) --(1 뺌)<br>
+            &nbsp;- 비트연산자 : & | ^ ~<br>
+            &nbsp;- 대입연산자 : = *= += -= !=<br>
+            &nbsp;- 비교연산자 : > < >= <= == !=<br>
+            &nbsp;- 논리연산자 : && ||<br>
+            &nbsp;<span>var num = 5 + 7</span>같은 형식으로 사용한다.
+            <hr>
+            <h2>조건문 만들기</h2>
+            &nbsp;조건문의 기본 형식은 <span>if (비교연산식) { 실행할 코드 }</span>이다.<br>
+            &nbsp;추가로 <span>else if (비교연산식) { 실행할 코드 }</span>, <span>else { 실행할 코드 }</span>
+            &nbsp;을 붙인다. else if문은 if문의 비교연산식이 거짓일 때 실행되고, <br>
+            &nbsp;else문은 if문과 모든 else if문이 거짓일 때 실행된다.<br>
+            <hr>
+            <h2>웹사이트 연결하기</h2>
+            &nbsp;<span>location.href = url;</span>같은 형식으로 사용하고,<br>
+            &nbsp;url 부분에 웹사이트의 링크를 입력한다.<br>
+            &nbsp;<span>location.href = 'http://google.com';</span>같은 형식으로 사용한다.
+            <hr>
+            <h2>while문 사용법</h2>
+            &nbsp;while문은 <span>while(비교연산식) { 실행할 코드 }</span>의 형식으로 사용한다.<br>
+            &nbsp;실행할 코드는 비교연산식이 참일경우 무한반복되고, 거짓일 경우 멈춘다.<br>
+            &nbsp;<span>while(true) { alert('Hello World!!!'); }</span>같은 <br>
+            &nbsp;형식으로 사용한다.
+            <hr>
+            <h2>for문 사용법</h2>
+            &nbsp;for문은<br>
+            &nbsp;<span>for (변수의 초기값; 비교연산식; 실행할 코드1) { 실행할 코드2 }</span><br>
+            &nbsp;같은 형식으로 사용한다. 예를 들어서<br>
+            &nbsp;<span>for (var i = 0;  i < 5; i++) { alert('Hi'); }</span>는 <br>
+            &nbsp;i의 초기값을 i로 설정하고 i가 5보다 작을동안<br>
+            &nbsp;i를 1씩 더한다는 것이므로 0부터 4까지, 즉 실행할 코드2가<br>
+            &nbsp;5번 반복된다.
+            <hr>
+            <h2>객체 사용법</h2>
+            &nbsp;객체는 <span>var userObj = { 키1 : 값1, 키2 : 값2 };</span>의 형식으로<br>
+            &nbsp;사용한다. 여기에서 키와 값을 합쳐서 속성이라 부르는데<br>
+            &nbsp;각 속성은 쉼표로 구분한다. 값에는 다양한 자료형과 함수 등이<br>
+            &nbsp;들어갈 수 있다.<br>
+            &nbsp;<span>var userData = {</span><br>
+            &nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;age : 17,</span><br>
+            &nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;sayHi : function() {</span><br>
+            &nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('Hi');</span><br>
+            &nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;}</span><br>
+            &nbsp;<span>}</span><br>
+            &nbsp;처럼 선언하고, 객체 안의 값은 <span>alert(userData.age);</span>나 <br>
+            &nbsp;<span>userData.sayHi();</span>처럼 호출한다.
+            <hr>
+            <h2>document 객체 사용법</h2>
+            &nbsp;document 객체에는 매우 다양한 프로퍼티가 있다.<br>
+            &nbsp;주요 프로퍼티로와 메소드는<br>
+            &nbsp;&lt프로퍼티&gt<br>
+            &nbsp;- <span>location</span> : 문서의 URL정보를 가진 location객체의 레퍼런스<br>
+            &nbsp;- <span>domain</span> : 서버의 도메인 이름<br>
+            &nbsp;- <span>lastModified</span> : "MM/DD/YYYY hhmmss"형식의 문서의<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최근 수정시간<br>
+            &nbsp;- <span>readyState</span> : 문서의 현재 로딩상태를 나타내는 문자열<br>
+            &nbsp;- <span>title</span> : 문서의 탭 제목. 없으면 빈 문자열을 출력<br>
+            &nbsp;- <span>body</span> : body객체에 대한 레퍼런스<br>
+            &nbsp;- <span>head</span> : head객체에 대한 레퍼런스<br>
+            &nbsp;- <span>URL</span> : 현제 문서의 URL<br>
+            &nbsp;&lt;메소드&gt;<br>
+            &nbsp;- <span>getElementsByTagName()</span> : ()안의 태그이름을 가진 모든 태그<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;의 컬렉션 리턴<br>
+            &nbsp;- <span>getElementById()</span> : ()안의 class속성값을 가진<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;모든 태그의 컬랙션 리턴<br>
+            &nbsp;- <span>getElementByName()</span> : ()안의 name속성 값을 가진 모든 태그<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;의 컬랙션 리턴<br>
+            &nbsp;- <span>querySelector()</span> : 서낵자로 가장 먼저 선택되는 DOM객체 리턴<br>
+            &nbsp;- <span>querySelectorAll()</span> : 선택자로 DOM객체 컬랙션 리턴<br>
+            &nbsp;프로퍼티는 <span>alert('document.location');</span>같은 형식으로 사용하고<br>
+            &nbsp;메소드는 <span>document.getElementById('selected').style.backgroundColor = 'red'</span>
+            &nbsp;같은 형식으로 사용한다.<br>
+            <hr>
+            <h2>참고자료</h2>
+            &nbsp;<a href="https://opentutorials.org/course/743" target="_blank">생활코딩(자바스크립트)</a>에서 더 자세한 설명을 들을 수 있다.<br><br>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
